@@ -337,7 +337,7 @@ create or replace function public.generate_verification_code()
 returns text language plpgsql volatile as $$
 declare
   alphabet constant text := 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  bytes bytea := gen_random_bytes(7);
+  bytes bytea := extensions.gen_random_bytes(7);
   body text := '';
   i int;
 begin

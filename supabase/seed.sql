@@ -214,9 +214,10 @@ from public.bookings b where b.id = sp.booking_id and sp.program_id = '00000000-
 update public.ijazah_programs set status = 'completed', completed_at = now() - interval '76 days'
  where id = '00000000-0000-4000-b000-000000000002';
 
-insert into public.ijazahs (program_id, student_id, teacher_id, riwayah, student_name, teacher_name, sanad_snapshot,
-                            granting_sheikh_snapshot, pages_count, sessions_count, started_at, issued_at, verification_code)
-select pr.id, pr.student_id, pr.teacher_id, pr.riwayah, s.full_name, t.full_name, t.sanad_text, t.granting_sheikh,
+insert into public.ijazahs (program_id, student_id, teacher_id, riwayah, student_name, teacher_name, student_gender,
+                            teacher_gender, sanad_snapshot, granting_sheikh_snapshot, pages_count, sessions_count,
+                            started_at, issued_at, verification_code)
+select pr.id, pr.student_id, pr.teacher_id, pr.riwayah, s.full_name, t.full_name, s.gender, t.gender, t.sanad_text, t.granting_sheikh,
        public.program_pages_covered(pr.id), 121, pr.started_at, now() - interval '76 days',
        'MJZ-K7QD-XP2' || public.verification_checksum('K7QDXP2')
 from public.ijazah_programs pr

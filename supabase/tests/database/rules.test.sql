@@ -1,7 +1,7 @@
 -- Database rule tests. Run: npx supabase test db   (requires the seed data)
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(18);
+select plan(22);
 
 -- helpers --------------------------------------------------------------------------
 create or replace function pg_temp.act_as(p_user uuid) returns void language plpgsql as $$
@@ -132,6 +132,35 @@ select is(
 -- 16. …but cannot read the ijazahs table
 select is((select count(*) from public.ijazahs), 0::bigint, 'anon cannot list ijazahs');
 select is((select revoked from public.verify_ijazah('MJZ-K7QD-XP22')), true, 'verification shows the revocation');
+
+-- 19–22. issuing an ijazah --------------------------------------------------------
+reset role;
+select set_config('mujaz.trusted', 'on', true);
+insert into public.bookings (id, student_id, teacher_id, program_id, starts_at, ends_at, duration_min, status, price)
+values ('00000000-0000-4000-e000-000000000001', '00000000-0000-4000-a000-000000000201', '00000000-0000-4000-a000-000000000101',
+        '00000000-0000-4000-b000-000000000001', now() - interval '3 hours', now() - interval '150 minutes', 30, 'scheduled', 12);
+select set_config('mujaz.trusted', 'off', true);
+
+select pg_temp.act_as('00000000-0000-4000-a000-000000000101');
+select throws_ok(
+  $$ select public.issue_ijazah('00000000-0000-4000-b000-000000000001') $$,
+  '22023', 'khatmah_incomplete', 'cannot issue before all 604 pages are recorded'
+);
+insert into public.session_progress (booking_id, from_page, to_page, quality, status)
+values ('00000000-0000-4000-e000-000000000001', 200, 604, 'excellent', 'approved');
+select is(
+  (select pages_count from public.issue_ijazah('00000000-0000-4000-b000-000000000001')), 604::smallint,
+  'teacher issues the ijazah at 604/604'
+);
+select throws_ok(
+  $$ select public.issue_ijazah('00000000-0000-4000-b000-000000000001') $$,
+  '22023', 'program_not_active', 'an ijazah is issued only once per program'
+);
+select ok(
+  (select verification_code ~ '^MJZ-[A-Z2-9]{4}-[A-Z2-9]{4}$' and sanad_snapshot like '%المرصفي%'
+   from public.ijazahs where program_id = '00000000-0000-4000-b000-000000000001'),
+  'code is well-formed and the sanad was snapshotted'
+);
 
 select * from finish();
 rollback;

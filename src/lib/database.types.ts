@@ -183,14 +183,14 @@ isOneToOne: false
                   ]
                 },"ijazahs": {
                   Row: {
-                    "granting_sheikh_snapshot": string | null,"id": string,"issued_at": string,"pages_count": number,"program_id": string,"revoke_reason": string | null,"revoked_at": string | null,"revoked_by": string | null,"riwayah": string,"sanad_snapshot": string,"sessions_count": number,"started_at": string | null,"student_id": string | null,"student_name": string,"teacher_id": string | null,"teacher_name": string,"verification_code": string
+                    "granting_sheikh_snapshot": string | null,"id": string,"issued_at": string,"pages_count": number,"program_id": string,"revoke_reason": string | null,"revoked_at": string | null,"revoked_by": string | null,"riwayah": string,"sanad_snapshot": string,"sessions_count": number,"started_at": string | null,"student_gender": Database["public"]['Enums']["gender"] | null,"student_id": string | null,"student_name": string,"teacher_gender": Database["public"]['Enums']["gender"] | null,"teacher_id": string | null,"teacher_name": string,"verification_code": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "granting_sheikh_snapshot"?: string | null,"id"?: string,"issued_at"?: string,"pages_count": number,"program_id": string,"revoke_reason"?: string | null,"revoked_at"?: string | null,"revoked_by"?: string | null,"riwayah": string,"sanad_snapshot": string,"sessions_count": number,"started_at"?: string | null,"student_id"?: string | null,"student_name": string,"teacher_id"?: string | null,"teacher_name": string,"verification_code": string
+                    "granting_sheikh_snapshot"?: string | null,"id"?: string,"issued_at"?: string,"pages_count": number,"program_id": string,"revoke_reason"?: string | null,"revoked_at"?: string | null,"revoked_by"?: string | null,"riwayah": string,"sanad_snapshot": string,"sessions_count": number,"started_at"?: string | null,"student_gender"?: Database["public"]['Enums']["gender"] | null,"student_id"?: string | null,"student_name": string,"teacher_gender"?: Database["public"]['Enums']["gender"] | null,"teacher_id"?: string | null,"teacher_name": string,"verification_code": string
                   }
                   Update: {
-                    "granting_sheikh_snapshot"?: string | null,"id"?: string,"issued_at"?: string,"pages_count"?: number,"program_id"?: string,"revoke_reason"?: string | null,"revoked_at"?: string | null,"revoked_by"?: string | null,"riwayah"?: string,"sanad_snapshot"?: string,"sessions_count"?: number,"started_at"?: string | null,"student_id"?: string | null,"student_name"?: string,"teacher_id"?: string | null,"teacher_name"?: string,"verification_code"?: string
+                    "granting_sheikh_snapshot"?: string | null,"id"?: string,"issued_at"?: string,"pages_count"?: number,"program_id"?: string,"revoke_reason"?: string | null,"revoked_at"?: string | null,"revoked_by"?: string | null,"riwayah"?: string,"sanad_snapshot"?: string,"sessions_count"?: number,"started_at"?: string | null,"student_gender"?: Database["public"]['Enums']["gender"] | null,"student_id"?: string | null,"student_name"?: string,"teacher_gender"?: Database["public"]['Enums']["gender"] | null,"teacher_id"?: string | null,"teacher_name"?: string,"verification_code"?: string
                   }
                   Relationships: [
                     {
@@ -657,8 +657,10 @@ isOneToOne: false
 "sanad_snapshot": string,
 "sessions_count": number,
 "started_at": string | null,
+"student_gender": Database["public"]['Enums']["gender"] | null,
 "student_id": string | null,
 "student_name": string,
+"teacher_gender": Database["public"]['Enums']["gender"] | null,
 "teacher_id": string | null,
 "teacher_name": string,
 "verification_code": string
@@ -772,8 +774,10 @@ isOneToOne: false
 "sanad_snapshot": string,
 "sessions_count": number,
 "started_at": string | null,
+"student_gender": Database["public"]['Enums']["gender"] | null,
 "student_id": string | null,
 "student_name": string,
+"teacher_gender": Database["public"]['Enums']["gender"] | null,
 "teacher_id": string | null,
 "teacher_name": string,
 "verification_code": string
@@ -800,7 +804,7 @@ isOneToOne: false
                            },
 "verify_ijazah":
 { Args: { "p_code": string }; Returns: {
-              "granting_sheikh_snapshot": string,"issued_at": string,"pages_count": number,"revoke_reason": string,"revoked": boolean,"riwayah": string,"riwayah_name_ar": string,"riwayah_name_en": string,"sanad_snapshot": string,"sessions_count": number,"started_at": string,"student_name": string,"teacher_name": string,"verification_code": string
+              "granting_sheikh_snapshot": string,"issued_at": string,"pages_count": number,"revoke_reason": string,"revoked": boolean,"riwayah": string,"riwayah_name_ar": string,"riwayah_name_en": string,"sanad_snapshot": string,"sessions_count": number,"started_at": string,"student_gender": Database["public"]['Enums']["gender"],"student_name": string,"teacher_gender": Database["public"]['Enums']["gender"],"teacher_name": string,"verification_code": string
             }[]
                            }
           }

@@ -1,7 +1,7 @@
 -- Phase 1: profiles, roles, and the auth → profile trigger.
 
-create extension if not exists btree_gist;
-create extension if not exists pgcrypto;
+create extension if not exists btree_gist with schema extensions;
+create extension if not exists pgcrypto with schema extensions;
 
 create type public.user_role as enum ('student', 'teacher', 'admin');
 create type public.gender as enum ('male', 'female');
