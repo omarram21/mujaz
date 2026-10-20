@@ -48,3 +48,11 @@ export function formatPrice(amount: number, locale: AppLocale): string {
   const n = formatNumber(amount, locale, { decimals: 2 });
   return locale === 'ar' ? `${n} $` : `$${n}`;
 }
+
+/** Arabic-Indic / Eastern Arabic-Indic digits → ASCII (for parsing user input). */
+export function toAsciiDigits(input: string): string {
+  return input
+    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0))
+    .replace(/٫/g, '.');
+}

@@ -76,9 +76,16 @@ export function Button({
       {loading ? (
         <ActivityIndicator color={p.fg} />
       ) : (
-        <View style={styles.row}>
+        <View style={[styles.row, { maxWidth: '100%' }]}>
           {icon ? <Icon name={icon} size={18} color={p.fg} /> : null}
-          <Text size={15} weight={variant === 'secondary' ? '500' : '600'} color={p.fg}>
+          <Text
+            size={15}
+            weight={variant === 'secondary' ? '500' : '600'}
+            color={p.fg}
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            minimumFontScale={0.8}
+          >
             {label}
           </Text>
         </View>

@@ -91,6 +91,7 @@ export function AddMistakeSheet({
               <Input
                 label={t('live.surahNumber')}
                 keyboardType="number-pad"
+                localizedDigits
                 maxLength={3}
                 value={surah}
                 onChangeText={setSurah}
@@ -101,6 +102,7 @@ export function AddMistakeSheet({
               <Input
                 label={t('live.ayahNumber')}
                 keyboardType="number-pad"
+                localizedDigits
                 maxLength={3}
                 value={ayah}
                 onChangeText={setAyah}

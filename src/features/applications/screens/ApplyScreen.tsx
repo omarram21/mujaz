@@ -294,6 +294,7 @@ function ApplyForm({ draft }: { draft: Application }) {
               <Input
                 label={t('apply.years')}
                 keyboardType="number-pad"
+                localizedDigits
                 maxLength={2}
                 value={field.value}
                 onChangeText={field.onChange}

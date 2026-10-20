@@ -445,7 +445,77 @@
     "fromPage": "From page",
     "toPage": "To page",
     "errors": {
-      "pages": "Pages are 1–604 and the end can't be before the start"
-    }
+      "pages": "Pages are 1–604 and the end can't be before the start",
+      "quality": "Choose a performance rating before approving",
+      "notStarted": "You can't approve a session that hasn't started"
+    },
+    "title": "Session record",
+    "subtitle": "Student: {{name}} · {{date}}",
+    "whatWasRead": "What was recited",
+    "quality": "Performance",
+    "mistakes": "Recorded mistakes",
+    "noMistakes": "No mistakes recorded.",
+    "note": "Note for the student",
+    "notePlaceholder": "Review the rules of ikhfa' before next session…",
+    "saveDraft": "Save draft",
+    "approve": "Approve and finish",
+    "draftSaved": "Draft saved.",
+    "lockedNotice": "This record is approved and added to the student's khatmah; it can't be edited."
+  },
+  "progress": {
+    "title": "My khatmah",
+    "pagesOf": "{{done}} of {{total}} pages",
+    "ringA11y": "{{percent}} percent done, {{done}} pages",
+    "sessionsDone": "Sessions done",
+    "weekStreak": "Weeks in a row",
+    "expectedFinish": "Expected finish",
+    "done": "Done",
+    "juzTitle": "The thirty juz",
+    "juz_mastered": "Mastered",
+    "juz_inProgress": "In progress",
+    "juz_notStarted": "Not started",
+    "juzA11y": "Juz {{n}}: {{status}}",
+    "recent": "Recent sessions",
+    "noSessions": "No recorded sessions yet.",
+    "rated": "rated {{q}}",
+    "review": "Review",
+    "previewCertificate": "Preview Ijazah certificate",
+    "completedNotice": "This khatmah is complete. May Allah bless you.",
+    "emptyTitle": "No khatmah yet",
+    "emptyBody": "Book your first session with a sheikh to start tracking your khatmah page by page.",
+    "pages_one": "{{n}} page",
+    "pages_other": "{{n}} pages",
+    "mistakes_one": "{{n}} mistake",
+    "mistakes_other": "{{n}} mistakes"
+  },
+  "quality": {
+    "excellent": "Excellent",
+    "good": "Good",
+    "acceptable": "Acceptable",
+    "repeat": "Repeat"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "verified": "Verified",
+    "sessionsToday": "Sessions today",
+    "activeStudents": "Active students",
+    "today": "Today",
+    "viewAll": "View all",
+    "noSessionsToday": "No sessions today.",
+    "am": "AM",
+    "pm": "PM",
+    "upcoming": "Upcoming",
+    "awaitingRecord": "Awaiting record",
+    "awaitingHint": "Record pages and mistakes to update their khatmah",
+    "closest": "Students closest to completion",
+    "noStudents": "No active students yet."
+  },
+  "students": {
+    "title": "My students",
+    "completed": "Completed",
+    "emptyTitle": "No students yet",
+    "emptyBody": "Every student who books with you appears here.",
+    "sessions_one": "{{n}} session",
+    "sessions_other": "{{n}} sessions"
   }
 }

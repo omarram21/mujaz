@@ -36,3 +36,14 @@ describe('formatNumber', () => {
     expect(localizeDigits('8:30 PM', 'ar')).toBe('٨:٣٠ PM');
   });
 });
+
+describe('toAsciiDigits', () => {
+  it('parses Arabic-Indic and Persian digits', () => {
+    const { toAsciiDigits } = jest.requireActual(
+      '../formatNumber',
+    ) as typeof import('../formatNumber');
+    expect(toAsciiDigits('١٩٦')).toBe('196');
+    expect(toAsciiDigits('۱۲')).toBe('12');
+    expect(toAsciiDigits('12٫5')).toBe('12.5');
+  });
+});

@@ -54,6 +54,7 @@ export function PositionSheet({
               <Input
                 label={t('sessionNotes.fromPage')}
                 keyboardType="number-pad"
+                localizedDigits
                 maxLength={3}
                 value={from}
                 onChangeText={setFrom}
@@ -64,6 +65,7 @@ export function PositionSheet({
               <Input
                 label={t('sessionNotes.toPage')}
                 keyboardType="number-pad"
+                localizedDigits
                 maxLength={3}
                 value={to}
                 onChangeText={setTo}

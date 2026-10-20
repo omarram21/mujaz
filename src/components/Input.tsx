@@ -2,7 +2,9 @@ import { forwardRef } from 'react';
 import { Platform, TextInput, View, type TextInputProps } from 'react-native';
 import { useTheme, fontFor, layout, radii } from '@/theme';
 import { Text } from './Text';
+import i18n from 'i18next';
 import { isRTLLayout } from '@/lib/direction';
+import { localizeDigits, toAsciiDigits } from '@/lib/formatNumber';
 
 export interface InputProps extends TextInputProps {
   label?: string;
@@ -12,6 +14,8 @@ export interface InputProps extends TextInputProps {
   multilineHeight?: number;
   family?: 'ui' | 'display';
   tone?: 'light' | 'dark';
+  /** Show Arabic-Indic digits in Arabic and hand ASCII digits back to onChangeText. */
+  localizedDigits?: boolean;
 }
 
 /**
@@ -22,7 +26,20 @@ export const physicalLeft = (): 'left' | 'right' =>
   Platform.OS !== 'web' && isRTLLayout() ? 'right' : 'left';
 
 export const Input = forwardRef<TextInput, InputProps>(function Input(
-  { label, error, ltr, multilineHeight, family = 'ui', tone = 'light', style, multiline, ...rest },
+  {
+    label,
+    error,
+    ltr,
+    multilineHeight,
+    family = 'ui',
+    tone = 'light',
+    style,
+    multiline,
+    localizedDigits,
+    value,
+    onChangeText,
+    ...rest
+  },
   ref,
 ) {
   const { colors } = useTheme();
@@ -41,6 +58,14 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
         multiline={multiline}
         textAlignVertical={multiline ? 'top' : 'center'}
         {...rest}
+        value={
+          localizedDigits && value != null
+            ? localizeDigits(value, i18n.language === 'en' ? 'en' : 'ar')
+            : value
+        }
+        onChangeText={
+          localizedDigits && onChangeText ? (v) => onChangeText(toAsciiDigits(v)) : onChangeText
+        }
         style={[
           {
             minHeight: multiline ? (multilineHeight ?? 110) : layout.inputHeight,

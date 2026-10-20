@@ -152,6 +152,10 @@ select ('00000000-0000-4000-c000-' || lpad(i::text, 12, '0'))::uuid,
        'approved'
 from generate_series(1, 48) i;
 
+-- Records were approved right after each session.
+update public.session_progress sp set approved_at = b.ends_at, created_at = b.starts_at
+from public.bookings b where b.id = sp.booking_id;
+
 -- Surah/ayah columns from the page ranges are filled by the app; seed a few mistakes on recent sessions.
 insert into public.recitation_mistakes (booking_id, teacher_id, student_id, type, surah, ayah, page, description)
 values
@@ -169,6 +173,12 @@ select ('00000000-0000-4000-c000-0000000001' || lpad(i::text, 2, '0'))::uuid,
        date_trunc('hour', now()) + make_interval(hours => 4, days => d) + interval '30 minutes',
        30, 'scheduled', 12
 from (values (1, 0), (2, 2), (3, 4)) as v(i, d);
+
+-- Yesterday's session the sheikh hasn't recorded yet (shows as "awaiting record").
+insert into public.bookings (id, student_id, teacher_id, program_id, starts_at, ends_at, duration_min, status, price)
+values ('00000000-0000-4000-c000-000000000199', '00000000-0000-4000-a000-000000000201', '00000000-0000-4000-a000-000000000101',
+        '00000000-0000-4000-b000-000000000001', date_trunc('hour', now()) - interval '20 hours',
+        date_trunc('hour', now()) - interval '20 hours' + interval '30 minutes', 30, 'scheduled', 12);
 
 -- One cancelled session for the "cancelled" tab.
 insert into public.bookings (student_id, teacher_id, program_id, starts_at, ends_at, duration_min, status, price,
@@ -197,6 +207,9 @@ select ('00000000-0000-4000-d000-' || lpad(i::text, 12, '0'))::uuid,
        floor((i - 1) * 604.0 / 121)::int + 1, floor(i * 604.0 / 121)::int,
        (array['excellent', 'good', 'excellent'])[1 + i % 3]::public.session_quality, 'approved'
 from generate_series(1, 121) i;
+
+update public.session_progress sp set approved_at = b.ends_at, created_at = b.starts_at
+from public.bookings b where b.id = sp.booking_id and sp.program_id = '00000000-0000-4000-b000-000000000002';
 
 update public.ijazah_programs set status = 'completed', completed_at = now() - interval '76 days'
  where id = '00000000-0000-4000-b000-000000000002';
