@@ -1,7 +1,1 @@
-import { useTranslation } from 'react-i18next';
-import { PlaceholderScreen } from '@/components';
-
-export default function Screen() {
-  const { t } = useTranslation();
-  return <PlaceholderScreen title={t('tabs.sessions')} />;
-}
+export { MySessionsScreen as default } from '@/features/booking/screens/MySessionsScreen';
