@@ -92,7 +92,56 @@ export function zoneForCountry(country: Country, deviceZone: string): string {
   return zones.includes(deviceZone) ? deviceZone : country.tz;
 }
 
-/** "Asia/Amman" → "Amman" (display only). */
-export function cityOfZone(tz: string): string {
+const CITY_AR: Record<string, string> = {
+  'Asia/Amman': 'عمّان',
+  'Asia/Riyadh': 'الرياض',
+  'Africa/Cairo': 'القاهرة',
+  'Asia/Dubai': 'دبي',
+  'Asia/Kuwait': 'الكويت',
+  'Asia/Qatar': 'الدوحة',
+  'Asia/Bahrain': 'المنامة',
+  'Asia/Muscat': 'مسقط',
+  'Asia/Aden': 'عدن',
+  'Asia/Baghdad': 'بغداد',
+  'Asia/Damascus': 'دمشق',
+  'Asia/Beirut': 'بيروت',
+  'Asia/Hebron': 'الخليل',
+  'Asia/Gaza': 'غزة',
+  'Africa/Khartoum': 'الخرطوم',
+  'Africa/Tripoli': 'طرابلس',
+  'Africa/Tunis': 'تونس',
+  'Africa/Algiers': 'الجزائر',
+  'Africa/Casablanca': 'الدار البيضاء',
+  'Africa/Nouakchott': 'نواكشوط',
+  'Africa/Mogadishu': 'مقديشو',
+  'Europe/Istanbul': 'إسطنبول',
+  'Asia/Karachi': 'كراتشي',
+  'Asia/Kolkata': 'كولكاتا',
+  'Asia/Dhaka': 'دكا',
+  'Asia/Jakarta': 'جاكرتا',
+  'Asia/Makassar': 'مكاسر',
+  'Asia/Jayapura': 'جايابورا',
+  'Asia/Kuala_Lumpur': 'كوالالمبور',
+  'Africa/Lagos': 'لاغوس',
+  'Europe/London': 'لندن',
+  'Europe/Berlin': 'برلين',
+  'Europe/Paris': 'باريس',
+  'Europe/Amsterdam': 'أمستردام',
+  'Europe/Stockholm': 'ستوكهولم',
+  'America/New_York': 'نيويورك',
+  'America/Chicago': 'شيكاغو',
+  'America/Denver': 'دنفر',
+  'America/Los_Angeles': 'لوس أنجلوس',
+  'America/Toronto': 'تورونتو',
+  'America/Winnipeg': 'وينيبيغ',
+  'America/Edmonton': 'إدمونتون',
+  'America/Vancouver': 'فانكوفر',
+  'Australia/Sydney': 'سيدني',
+  'Australia/Perth': 'بيرث',
+};
+
+/** "Asia/Amman" → "عمّان" / "Amman" (display only). */
+export function cityOfZone(tz: string, locale: AppLocale = 'en'): string {
+  if (locale === 'ar' && CITY_AR[tz]) return CITY_AR[tz];
   return (tz.split('/').pop() ?? tz).replace(/_/g, ' ');
 }

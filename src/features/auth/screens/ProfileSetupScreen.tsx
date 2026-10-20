@@ -163,7 +163,7 @@ export function ProfileSetupScreen() {
             numberOfLines={1}
           >
             {country
-              ? `${countryName(country, locale)} · ${cityOfZone(timezone)} (${utcOffsetLabel(timezone)})`
+              ? `${countryName(country, locale)} · ${cityOfZone(timezone, locale)} (${utcOffsetLabel(timezone)})`
               : t('setup.chooseCountry')}
           </Text>
           <Icon name="chevronDown" size={16} color={colors.textMuted} strokeWidth={2} />

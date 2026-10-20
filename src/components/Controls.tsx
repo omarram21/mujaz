@@ -251,3 +251,42 @@ export function Divider({ color }: { color?: string }) {
   const { colors } = useTheme();
   return <View style={{ height: 1, backgroundColor: color ?? colors.divider }} />;
 }
+
+export function Checkbox({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  label: string;
+}) {
+  const { colors } = useTheme();
+  return (
+    <Pressable
+      onPress={() => onChange(!checked)}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked }}
+      accessibilityLabel={label}
+      style={{ flexDirection: 'row', alignItems: 'center', gap: 9, minHeight: 36 }}
+    >
+      <View
+        style={{
+          width: 20,
+          height: 20,
+          borderRadius: 6,
+          borderWidth: checked ? 0 : 1.5,
+          borderColor: colors.borderChip,
+          backgroundColor: checked ? colors.success : colors.surface,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {checked ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.4} /> : null}
+      </View>
+      <Text size={12.5} style={{ flex: 1 }}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}

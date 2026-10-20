@@ -64,19 +64,19 @@ if (Platform.OS !== 'web') {
   });
 }
 
-type PgResult<T> = { data: T | null; error: { message: string; code?: string } | null };
+type PgResult = { data: unknown; error: { message: string; code?: string } | null };
 
 /** Throws the PostgREST error (and on a missing row) so TanStack Query surfaces it. */
-export function unwrap<T>(res: PgResult<T>): NonNullable<T> {
+export function unwrap<R extends PgResult>(res: R): NonNullable<R['data']> {
   if (res.error) throw Object.assign(new Error(res.error.message), { code: res.error.code });
   if (res.data === null || res.data === undefined) {
     throw Object.assign(new Error('not found'), { code: 'PGRST116' });
   }
-  return res.data as NonNullable<T>;
+  return res.data as NonNullable<R['data']>;
 }
 
 /** Like unwrap, but a missing row (maybeSingle) is a valid null. */
-export function unwrapMaybe<T>(res: PgResult<T>): T | null {
+export function unwrapMaybe<R extends PgResult>(res: R): NonNullable<R['data']> | null {
   if (res.error) throw Object.assign(new Error(res.error.message), { code: res.error.code });
-  return res.data;
+  return (res.data ?? null) as NonNullable<R['data']> | null;
 }
