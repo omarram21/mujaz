@@ -1,0 +1,5 @@
+{
+  "CFBundleDisplayName": "Mujaz",
+  "NSCameraUsageDescription": "Mujaz uses the camera so your sheikh can see you during live sessions, and to scan Ijazah QR codes.",
+  "NSMicrophoneUsageDescription": "Mujaz uses the microphone so your sheikh can hear your recitation during live sessions."
+}

@@ -1,0 +1,77 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-20T07:15:00Z" },
+  "title": "Mujaz — Ijazah App UI Demo",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "designSystems": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · الترحيب", "is_interactive": true, "radius": 28 },
+    "Teachers.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "2 · قائمة المشايخ", "is_interactive": true, "radius": 28 },
+    "TeacherProfile.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "3 · ملف الشيخ", "is_interactive": true, "radius": 28 },
+    "Booking.dc.html": { "x": 0, "y": 1244, "w": 390, "h": 844, "title": "4 · حجز الجلسة", "is_interactive": true, "radius": 28 },
+    "Session.dc.html": { "x": 470, "y": 1244, "w": 390, "h": 844, "title": "5 · الجلسة المباشرة", "is_interactive": true, "radius": 28 },
+    "Progress.dc.html": { "x": 940, "y": 1244, "w": 390, "h": 844, "title": "6 · تقدّم الختمة", "is_interactive": true, "radius": 28 },
+    "SessionNotes.dc.html": { "x": 0, "y": 2488, "w": 390, "h": 844, "title": "7 · رصد الشيخ للجلسة", "radius": 28 },
+    "Ijazah.dc.html": { "x": 470, "y": 2488, "w": 390, "h": 844, "title": "8 · شهادة الإجازة", "is_interactive": true, "radius": 28 },
+    "TeacherDashboard.dc.html": { "x": 940, "y": 2488, "w": 390, "h": 844, "title": "9 · لوحة الشيخ", "is_interactive": true, "radius": 28 },
+    "Auth.dc.html": { "x": 0, "y": 3732, "w": 390, "h": 844, "title": "10 · إنشاء حساب", "is_interactive": true, "radius": 28 },
+    "ProfileSetup.dc.html": { "x": 470, "y": 3732, "w": 390, "h": 844, "title": "11 · إعداد ملف الطالب", "is_interactive": true, "radius": 28 },
+    "MySessions.dc.html": { "x": 940, "y": 3732, "w": 390, "h": 844, "title": "12 · جلساتي", "is_interactive": true, "radius": 28 },
+    "TeacherApply.dc.html": { "x": 0, "y": 4976, "w": 390, "h": 844, "title": "13 · طلب انضمام الشيخ", "radius": 28 },
+    "Availability.dc.html": { "x": 470, "y": 4976, "w": 390, "h": 844, "title": "14 · أوقات الشيخ", "radius": 28 },
+    "AdminReview.dc.html": { "x": 940, "y": 4976, "w": 390, "h": 844, "title": "15 · مراجعة الإدارة", "radius": 28 },
+    "RateSession.dc.html": { "x": 0, "y": 6220, "w": 390, "h": 844, "title": "16 · تقييم الجلسة", "is_interactive": true, "radius": 28 },
+    "VerifyIjazah.dc.html": { "x": 470, "y": 6220, "w": 390, "h": 844, "title": "17 · التحقّق من إجازة", "radius": 28 },
+    "Account.dc.html": { "x": 940, "y": 6220, "w": 390, "h": 844, "title": "18 · حسابي والإعدادات", "is_interactive": true, "radius": 28 }
+  },
+  "order": [
+    "Main.dc.html",
+    "Teachers.dc.html",
+    "TeacherProfile.dc.html",
+    "Booking.dc.html",
+    "Session.dc.html",
+    "Progress.dc.html",
+    "SessionNotes.dc.html",
+    "Ijazah.dc.html",
+    "TeacherDashboard.dc.html",
+    "Auth.dc.html",
+    "ProfileSetup.dc.html",
+    "MySessions.dc.html",
+    "TeacherApply.dc.html",
+    "Availability.dc.html",
+    "AdminReview.dc.html",
+    "RateSession.dc.html",
+    "VerifyIjazah.dc.html",
+    "Account.dc.html"
+  ],
+  "notes": {
+    "n1": { "x": 0, "y": -250, "text": "١ · رحلة الطالب: الاكتشاف والحجز", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n2": { "x": 0, "y": 994, "text": "٢ · الجلسة المباشرة ومتابعة الختمة", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n3": { "x": 0, "y": 2238, "text": "٣ · الإجازة وواجهة الشيخ", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n4": {
+      "x": 1420,
+      "y": 0,
+      "w": 320,
+      "text": "نسخة أولية (MVP) — الواجهة فقط، بدون كود.\n\nاضغط زر التشغيل على أي شاشة لتجربة الانتقال بينها:\nالترحيب ← المشايخ ← ملف الشيخ ← الحجز ← الجلسة ← التقدّم ← الإجازة.\n\nالأسماء والتقييمات والأسعار كلها بيانات تجريبية.",
+      "fill": "teal"
+    },
+    "n5": {
+      "x": 1420,
+      "y": 1244,
+      "w": 320,
+      "text": "الميزة التي لا توجد عند المنافسين:\n\n١ · سند الشيخ موثّق ومعروض في ملفه.\n٢ · متابعة الختمة صفحة بصفحة (٦٠٤) مع رصد الأخطاء.\n٣ · إجازة رقمية برمز تحقق يمكن لأي أحد التأكد منه.",
+      "fill": "gray"
+    },
+    "n6": { "x": 0, "y": 3482, "text": "٤ · التسجيل وإعداد الحساب والجلسات", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n7": { "x": 0, "y": 4726, "text": "٥ · انضمام الشيخ والتوثيق والجدول", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n8": { "x": 0, "y": 5970, "text": "٦ · ما بعد الجلسة والتحقّق والإعدادات", "kind": "title1", "maxW": 1330, "color": "green" },
+    "n9": {
+      "x": 1420,
+      "y": 4976,
+      "w": 320,
+      "text": "شاشة ١٣ و١٥ هما قلب الثقة في المنصّة:\nالشيخ يرفع إجازته وسنده، والإدارة تراجعها يدويًا قبل الموافقة.\n\nلا يظهر أي شيخ للطلاب قبل حالة «مقبول».",
+      "fill": "orange"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+/**
+ * Colour tokens from the Mujaz design. `light` is what v1 ships; `dark` exists so
+ * components never hard-code colours and dark mode can be switched on later.
+ */
+export const light = {
+  ground: '#0D3B2E',
+  groundDeep: '#0A3226',
+  groundDarkest: '#071F18',
+  groundCertificate: '#0A2A21',
+  groundAdmin: '#111A16',
+  borderDark: '#2C5648',
+  borderDarkAlt: '#1E4237',
+  borderDarkStrong: '#44705F',
+  gold: '#D4AF5A',
+  goldOnLight: '#C9A227',
+  goldText: '#8A6D14',
+  cream: '#F3E7C8',
+  creamBright: '#F6F2E8',
+  certificate: '#FBF7EC',
+  /** Muted text on dark surfaces. */
+  onDarkMuted: '#9FB6AB',
+  onDarkBody: '#E6EFE9',
+  onDarkSoft: '#B9CCC2',
+  bg: '#FAF8F3',
+  surface: '#FFFFFF',
+  border: '#ECE6D9',
+  borderStrong: '#E3DCCD',
+  borderChip: '#D9D2C3',
+  divider: '#F1ECE1',
+  text: '#15201A',
+  textBody: '#2E3B34',
+  textMuted: '#4F5D55',
+  textNav: '#6E7A72',
+  textDisabled: '#9AA49D',
+  success: '#14654A',
+  successSoft: '#F2F6F3',
+  successOnDark: '#EAF6F0',
+  warning: '#C9A227',
+  warningBg: '#FFF8E6',
+  warningBorder: '#EBD9A8',
+  warningText: '#5C4A0F',
+  danger: '#A32D31',
+  dangerBright: '#E5484D',
+  dangerSoft: '#FCEEEE',
+  info: '#1E4C6B',
+  infoSoft: '#EAF2F8',
+  trackEmpty: '#E6E0D2',
+  overlay: 'rgba(7,31,24,0.6)',
+} as const;
+
+export type ColorTokens = { [K in keyof typeof light]: string };
+
+export const dark: ColorTokens = {
+  ...light,
+  bg: '#0B1712',
+  surface: '#12211B',
+  border: '#22362D',
+  borderStrong: '#2A4036',
+  borderChip: '#2F473C',
+  divider: '#1B2C25',
+  text: '#EEF2EF',
+  textBody: '#D3DCD6',
+  textMuted: '#A8B5AD',
+  textNav: '#8E9B93',
+  textDisabled: '#5E6B63',
+  goldText: '#D4AF5A',
+  successSoft: '#163126',
+  warningBg: '#2A2410',
+  warningBorder: '#4A3F1C',
+  warningText: '#EBD9A8',
+  dangerSoft: '#3A1A1B',
+  infoSoft: '#16283A',
+  trackEmpty: '#26362F',
+  certificate: '#FBF7EC',
+};
+
+/** Avatar backgrounds (bg, fg), picked deterministically by user id. */
+export const avatarPalette: readonly (readonly [string, string])[] = [
+  ['#0D3B2E', '#D4AF5A'],
+  ['#5B3A6B', '#F0DCF7'],
+  ['#1E4C6B', '#CFE6F5'],
+  ['#6B3A2E', '#F7E0D6'],
+  ['#3A5B2E', '#E3F2D6'],
+  ['#6B5A1E', '#F7EDCF'],
+  ['#2E4A6B', '#D6E4F7'],
+  ['#6B2E4A', '#F7D6E4'],
+];

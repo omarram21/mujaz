@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>مُجاز — رصد الشيخ للجلسة</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; }
+a { color: #0D3B2E; text-decoration: none; }
+a:hover { color: #8A6D14; }
+</style>
+</helmet>
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FAF8F3; display: flex; flex-direction: column; overflow: hidden">
+
+  <header style="background: #fff; border-bottom: 1px solid #ECE6D9; padding: 18px 20px 14px; display: flex; align-items: center; gap: 12px">
+    <a href="TeacherDashboard.dc.html" aria-label="رجوع" style="width: 36px; height: 36px; border-radius: 11px; border: 1px solid #E3DCCD; display: flex; align-items: center; justify-content: center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <div style="flex: 1">
+      <h1 style="margin: 0; font-size: 16px; font-weight: 600; color: #15201A">رصد الجلسة</h1>
+      <p style="margin: 2px 0 0; font-size: 12px; color: #4F5D55">الطالب: أحمد طارق · ٢٠ أكتوبر</p>
+    </div>
+  </header>
+
+  <div style="flex: 1; padding: 16px 20px 0; display: flex; flex-direction: column; gap: 16px; overflow: hidden">
+
+    <section style="background: #fff; border: 1px solid #ECE6D9; border-radius: 16px; padding: 14px">
+      <h2 style="margin: 0 0 12px; font-size: 13px; font-weight: 600; color: #15201A">ما قُرئ في هذه الجلسة</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <div>
+          <label for="from" style="display: block; font-size: 11px; color: #4F5D55; margin-bottom: 5px">من صفحة</label>
+          <input id="from" type="text" value="١٩٦" style="width: 100%; box-sizing: border-box; height: 44px; border-radius: 11px; border: 1px solid #E3DCCD; background: #FAF8F3; padding: 0 12px; font-family: inherit; font-size: 15px; color: #15201A">
+        </div>
+        <div>
+          <label for="to" style="display: block; font-size: 11px; color: #4F5D55; margin-bottom: 5px">إلى صفحة</label>
+          <input id="to" type="text" value="١٩٨" style="width: 100%; box-sizing: border-box; height: 44px; border-radius: 11px; border: 1px solid #E3DCCD; background: #FAF8F3; padding: 0 12px; font-family: inherit; font-size: 15px; color: #15201A">
+        </div>
+      </div>
+      <p style="margin: 10px 0 0; font-size: 11.5px; color: #14654A">سورة التوبة ٣٤ ← ٥٩ · ٣ صفحات · الجزء ١٠</p>
+    </section>
+
+    <section>
+      <h2 style="margin: 0 0 10px; font-size: 13px; font-weight: 600; color: #15201A">تقييم الأداء</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px">
+        <button type="button" style="height: 46px; border-radius: 12px; border: 2px solid #14654A; background: #14654A; color: #fff; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer">ممتاز</button>
+        <button type="button" style="height: 46px; border-radius: 12px; border: 1px solid #E3DCCD; background: #fff; color: #15201A; font-family: inherit; font-size: 12.5px; cursor: pointer">جيد</button>
+        <button type="button" style="height: 46px; border-radius: 12px; border: 1px solid #E3DCCD; background: #fff; color: #15201A; font-family: inherit; font-size: 12.5px; cursor: pointer">مقبول</button>
+        <button type="button" style="height: 46px; border-radius: 12px; border: 1px solid #E3DCCD; background: #fff; color: #15201A; font-family: inherit; font-size: 12.5px; cursor: pointer">يُعاد</button>
+      </div>
+    </section>
+
+    <section>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px">
+        <h2 style="margin: 0; font-size: 13px; font-weight: 600; color: #15201A">الأخطاء المرصودة</h2>
+        <button type="button" style="display: flex; align-items: center; gap: 5px; border: 0; background: transparent; color: #0D3B2E; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0D3B2E" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          إضافة
+        </button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="background: #fff; border: 1px solid #ECE6D9; border-right: 3px solid #C9A227; border-radius: 12px; padding: 11px 13px; display: flex; align-items: center; gap: 10px">
+          <div style="flex: 1; min-width: 0">
+            <p style="margin: 0; font-size: 13px; color: #15201A">إخفاء ناقص عند «من بعد»</p>
+            <p style="margin: 3px 0 0; font-size: 11px; color: #4F5D55">الآية ٤١ · صفحة ١٩٧</p>
+          </div>
+          <span style="background: #FFF8E6; color: #8A6D14; font-size: 10.5px; font-weight: 600; padding: 4px 9px; border-radius: 7px; flex-shrink: 0">تجويد</span>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #ECE6D9; border-right: 3px solid #C23B3F; border-radius: 12px; padding: 11px 13px; display: flex; align-items: center; gap: 10px">
+          <div style="flex: 1; min-width: 0">
+            <p style="margin: 0; font-size: 13px; color: #15201A">سقوط لفظ «من»</p>
+            <p style="margin: 3px 0 0; font-size: 11px; color: #4F5D55">الآية ٥٢ · صفحة ١٩٨</p>
+          </div>
+          <span style="background: #FDEDEE; color: #A32D31; font-size: 10.5px; font-weight: 600; padding: 4px 9px; border-radius: 7px; flex-shrink: 0">حفظ</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <label for="note" style="display: block; font-size: 13px; font-weight: 600; color: #15201A; margin-bottom: 9px">ملاحظة للطالب</label>
+      <textarea id="note" rows="3" style="width: 100%; box-sizing: border-box; border-radius: 13px; border: 1px solid #E3DCCD; background: #fff; padding: 12px; font-family: inherit; font-size: 13px; line-height: 1.8; color: #15201A; resize: none">راجع أحكام الإخفاء قبل الجلسة القادمة، والأداء عمومًا متقن ما شاء الله.</textarea>
+    </section>
+
+  </div>
+
+  <div style="background: #fff; border-top: 1px solid #ECE6D9; padding: 12px 20px 22px; display: flex; gap: 10px">
+    <button type="button" style="width: 110px; height: 52px; border-radius: 14px; border: 1px solid #D9D2C3; background: #fff; color: #15201A; font-family: inherit; font-size: 14px; cursor: pointer">حفظ كمسودة</button>
+    <button type="button" style="flex: 1; height: 52px; border-radius: 14px; border: 0; background: #0D3B2E; color: #F3E7C8; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">اعتماد وإنهاء الجلسة</button>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
