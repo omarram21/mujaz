@@ -388,5 +388,64 @@
     "cancelledByTeacher": "Cancelled by the sheikh",
     "emptyTitle": "No upcoming sessions",
     "emptyBody": "Make sure your available hours are set so students can book."
+  },
+  "live": {
+    "live": "Live session",
+    "connecting": "Connecting…",
+    "elapsed": "Session time",
+    "waitingOther": "Waiting for the other side",
+    "speaking": "{{name}} is speaking",
+    "silent": "Nobody is speaking",
+    "position": "Current reading position",
+    "surah": "Surah {{name}}",
+    "ayahRange": "Ayah {{from}} → {{to}}",
+    "pageRange": "Pages {{from}}–{{to}}",
+    "juzN": "Juz {{n}}",
+    "ayahN": "Ayah {{n}}",
+    "pageN": "Page {{n}}",
+    "notes": "Sheikh's notes during recitation",
+    "noMistakes": "No notes yet.",
+    "addMistake": "Add note",
+    "deleteMistake": "Delete note",
+    "surahNumber": "Surah number",
+    "ayahNumber": "Ayah number",
+    "description": "Note",
+    "descriptionPlaceholder": "Incomplete ikhfa' at «min ba'di»",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "cameraOff": "Turn camera off",
+    "cameraOn": "Turn camera on",
+    "end": "End session",
+    "endTitle": "End the session?",
+    "endBodyTeacher": "You'll go on to record what was recited and the mistakes.",
+    "endBodyStudent": "You can rejoin while the session time hasn't ended.",
+    "waitTitle": "It's not time to join yet",
+    "waitBody": "Joining opens 10 minutes before the session.",
+    "overTitle": "This session has ended",
+    "overBody": "You can check your khatmah or book a new session.",
+    "errors": {
+      "title": "Couldn't start the session",
+      "permissions": "Allow microphone access in your device settings, then try again.",
+      "daily_not_configured": "The video call service isn't configured on the server yet.",
+      "too_early": "Joining opens 10 minutes before the start.",
+      "session_over": "This session's time is over.",
+      "unsupported": "Live sessions are available in the mobile app only.",
+      "generic": "Check your internet connection and try again.",
+      "ayah": "Check the surah and ayah numbers",
+      "description": "Write the note"
+    }
+  },
+  "mistakes": {
+    "tajweed": "Tajweed",
+    "hifz": "Memorization",
+    "harakah": "Vowelling",
+    "waqf": "Stopping & starting"
+  },
+  "sessionNotes": {
+    "fromPage": "From page",
+    "toPage": "To page",
+    "errors": {
+      "pages": "Pages are 1–604 and the end can't be before the start"
+    }
   }
 }

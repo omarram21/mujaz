@@ -1,7 +1,5 @@
-import { useTranslation } from 'react-i18next';
-import { PlaceholderScreen } from '@/components';
+import { LiveSessionScreen } from '@/features/live/LiveSessionScreen';
 
-export default function Screen() {
-  const { t } = useTranslation();
-  return <PlaceholderScreen title={t('tabs.sessions')} />;
+export default function StudentLiveRoute() {
+  return <LiveSessionScreen role="student" />;
 }
