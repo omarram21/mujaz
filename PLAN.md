@@ -1,6 +1,20 @@
 # Mujaz / مُجاز — MVP implementation plan
 
-Status: **draft, awaiting approval.** Open questions are at the bottom; answers may change details below.
+Status: **all 9 phases built** (one commit per phase). See README.md for setup.
+
+### Decisions taken while building (from your answers + defaults)
+
+- Expo **SDK 57**, not 58: Daily's config plugin only supports `expo <58` today.
+- Prices in **USD**; one **free 30-min trial** per student–teacher pair (DB-enforced).
+- Ijazah can be issued only at **604/604** pages, by the teacher, once; it is immutable.
+- Mistakes are recorded **by the teacher**, live during the call (students see them via Realtime) and on the record screen.
+- A teacher changing their sanad after approval submits a **new application** for review; issued Ijazahs keep the sanad from issue time.
+- Bundle id placeholder **`com.mujaz.app`**; phone/Google sign-in built but **hidden behind env flags** until credentials exist.
+- Students can rate a session as soon as it has started (not only after the teacher records it), so the rate screen can follow the call.
+- Deleting an account removes all personal data; issued Ijazahs stay verifiable (snapshots), with links cleared.
+- Progress tile "days in a row" became **weeks in a row** (sessions are typically not daily); "expected finish" is projected from the last 60 days.
+- Calls run on native only; the web build shows a notice (useful for screen review, not for sessions).
+
 
 ## 0. Ground rules
 
@@ -112,6 +126,9 @@ Unit tests (Jest, pure functions in `src/lib`): slot generation across timezones
 | Phase 6+ | Expo account + `eas login`; a physical device or emulator for the dev client (Daily doesn't run in Expo Go) |
 | Release | Apple Developer + Google Play Console accounts, final bundle id, icon/splash artwork |
 
-## 6. Open questions
+## 6. Still open / needs you
 
-See the chat message accompanying this file.
+- Daily.co API key → `npx supabase secrets set DAILY_API_KEY=...` (calls return `daily_not_configured` until then).
+- Hosted Supabase project, EAS project, store accounts, final icons, support email, terms/privacy URLs.
+- SMS provider (phone OTP) and Google OAuth client ids, then flip the env flags.
+- Payments provider (HyperPay / PayTabs / Tap) — hook points marked `TODO(payments)`.

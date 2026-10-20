@@ -20,8 +20,25 @@ import { queryClient } from '@/lib/queryClient';
 import { AuthProvider } from '@/features/auth/AuthProvider';
 import { useAuthStore } from '@/features/auth/store';
 import { NotificationsBridge } from '@/services/notificationsBridge';
+import { ErrorState } from '@/components';
 
 void SplashScreen.preventAutoHideAsync();
+
+/** Last-resort screen if rendering throws (Expo Router error boundary). */
+export function ErrorBoundary({ retry }: { error: Error; retry: () => Promise<void> }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        padding: 24,
+        backgroundColor: themes.light.colors.bg,
+      }}
+    >
+      <ErrorState onRetry={() => void retry()} />
+    </View>
+  );
+}
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({

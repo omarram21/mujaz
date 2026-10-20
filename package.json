@@ -94,5 +94,16 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     }
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "react-native-background-timer",
+          "@daily-co/react-native-daily-js",
+          "@daily-co/react-native-webrtc"
+        ]
+      }
+    }
   }
 }

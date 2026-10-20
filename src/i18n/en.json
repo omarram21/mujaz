@@ -113,7 +113,33 @@
     "students": "Students"
   },
   "account": {
-    "logout": "Log out"
+    "logout": "Log out",
+    "learning": "Learning",
+    "teaching": "Teaching",
+    "myIjazahs": "My Ijazahs",
+    "khatmah": "Khatmah program",
+    "verify": "Verify an Ijazah",
+    "availability": "My availability",
+    "mySanad": "Update sanad and details",
+    "preferences": "Preferences",
+    "language": "App language",
+    "languageTitle": "Change language",
+    "languageBody": "The app will restart to apply the new layout direction.",
+    "reminders": "Session reminders",
+    "femaleOnly": "Show female teachers only",
+    "account": "Account",
+    "applyAsSheikh": "Apply as a certified sheikh",
+    "applyTitle": "Apply as a sheikh?",
+    "applyBody": "Your account becomes a sheikh account and you'll fill in an application for the Mujaz team to review. Your student sessions are kept.",
+    "applyConfirm": "Continue",
+    "help": "Help and support",
+    "helpSubject": "Mujaz support request",
+    "delete": "Delete account permanently",
+    "deleteTitle": "Delete your account permanently?",
+    "deleteBody": "Your data, sessions and khatmah will be deleted and this can't be undone. Issued Ijazahs remain verifiable by their code.",
+    "deleteConfirm": "Delete permanently",
+    "deleteFailed": "Couldn't delete the account. Try again or contact support.",
+    "deleteNote": "Deleting your account permanently removes your personal data from Mujaz."
   },
   "apply": {
     "title": "Application",
@@ -608,5 +634,10 @@
     "thanksTitle": "Thanks for your rating",
     "thanksBody": "Your rating helps other students choose their sheikh.",
     "backToSessions": "Back to my sessions"
+  },
+  "myIjazahs": {
+    "emptyTitle": "No Ijazahs yet",
+    "emptyBody": "Your Ijazah appears here once your sheikh grants it at the end of the khatmah.",
+    "revoked": "Revoked"
   }
 }
