@@ -1,0 +1,20 @@
+diff --git a/node_modules/expo-modules-core/ios/Core/AppContext.swift b/node_modules/expo-modules-core/ios/Core/AppContext.swift
+index f6ac865..287cb9b 100644
+--- a/node_modules/expo-modules-core/ios/Core/AppContext.swift
++++ b/node_modules/expo-modules-core/ios/Core/AppContext.swift
+@@ -418,8 +418,13 @@ public final class AppContext: NSObject, EXAppContextProtocol, @unchecked Sendab
+         self.registerNativeViews()
+       }
+     } else {
+-      Task { @MainActor [weak self] in
+-        self?.registerNativeViews()
++      // Mujaz patch: register synchronously so the JS thread cannot commit its first
++      // Fabric transaction while view descriptors are still being added on the main
++      // thread (Release launch crash in RawPropsParser / RuntimeScheduler::updateRendering).
++      DispatchQueue.main.sync {
++        MainActor.assumeIsolated {
++          self.registerNativeViews()
++        }
+       }
+     }
+   }
