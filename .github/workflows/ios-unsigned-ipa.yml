@@ -1,0 +1,66 @@
+# Builds an unsigned Release .ipa for sideloading (Sideloadly / AltStore re-sign it
+# with your Apple ID). The JS bundle is embedded, so no dev server is needed.
+#
+# Repository secrets: EXPO_PUBLIC_SUPABASE_URL, EXPO_PUBLIC_SUPABASE_ANON_KEY.
+name: iOS unsigned IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable # Expo SDK 57 needs Xcode 26.4+
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Write .env
+        run: |
+          cat > .env <<ENV
+          EXPO_PUBLIC_SUPABASE_URL=${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_PUBLIC_ENABLE_PHONE_AUTH=false
+          EXPO_PUBLIC_ENABLE_GOOGLE_AUTH=false
+          EXPO_PUBLIC_VERIFY_BASE_URL=https://mujaz.app/verify
+          ENV
+
+      - name: Prebuild iOS project
+        run: npx expo prebuild --platform ios --clean
+
+      - name: Build (no code signing)
+        run: |
+          WORKSPACE=$(ls -d ios/*.xcworkspace | head -1)
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          xcodebuild \
+            -workspace "$WORKSPACE" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            build | tail -n 200
+          echo "SCHEME=$SCHEME" >> "$GITHUB_ENV"
+
+      - name: Package .ipa
+        run: |
+          mkdir -p Payload
+          cp -R "build/Build/Products/Release-iphoneos/$SCHEME.app" Payload/
+          zip -qry Mujaz-unsigned.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mujaz-unsigned-ipa
+          path: Mujaz-unsigned.ipa
+          retention-days: 14
