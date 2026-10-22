@@ -12,10 +12,8 @@ import { signOut, updateProfile } from '@/features/auth/api';
 import { useRequiredProfile } from '@/features/auth/store';
 import { useMyIjazahs } from '@/features/ijazah/api';
 import { syncSessionReminders } from '@/services/notifications';
+import { SUPPORT_EMAIL } from '@/lib/contact';
 import { deleteMyAccount } from './api';
-
-// TODO(support): replace with the real support address.
-const SUPPORT_EMAIL = 'support@mujaz.app';
 
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -213,6 +211,16 @@ export function AccountScreen() {
               `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(t('account.helpSubject'))}`,
             )
           }
+        />
+        <ListRow
+          icon="document"
+          label={t('account.terms')}
+          onPress={() => router.push('/legal/terms')}
+        />
+        <ListRow
+          icon="shield"
+          label={t('account.privacy')}
+          onPress={() => router.push('/legal/privacy')}
         />
         <ListRow icon="logout" label={t('account.logout')} onPress={() => void signOut()} last />
       </Group>

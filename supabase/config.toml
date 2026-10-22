@@ -413,3 +413,21 @@ enabled = true
 # formatted with uppercase keywords, indent 2, max width 180, trailing commas,
 # and column/key alignment. Set to "null" to emit raw, unformatted SQL.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":180,\"commaStyle\":\"trailing\"}"
+
+# Hosted project overrides (applied by `supabase config push`).
+[remotes.production]
+project_id = "esnxxxevzgmthyoniloj"
+
+# Resend SMTP. Until a domain is verified in Resend, it only delivers to the
+# Resend account owner, so email confirmations stay off.
+[remotes.production.auth.email.smtp]
+enabled = true
+host = "smtp.resend.com"
+port = 465
+user = "resend"
+pass = "env(RESEND_API_KEY)"
+admin_email = "onboarding@resend.dev"
+sender_name = "Mujaz"
+
+[remotes.production.auth.rate_limit]
+email_sent = 30

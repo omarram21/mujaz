@@ -1,10 +1,6 @@
-import { Linking } from 'react-native';
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text } from '@/components';
-
-// TODO(legal): replace with the published terms / privacy URLs.
-const TERMS_URL = 'https://mujaz.app/terms';
-const PRIVACY_URL = 'https://mujaz.app/privacy';
 
 export function TermsLine() {
   const { t } = useTranslation();
@@ -16,7 +12,7 @@ export function TermsLine() {
         weight="600"
         color="ground"
         accessibilityRole="link"
-        onPress={() => void Linking.openURL(TERMS_URL)}
+        onPress={() => router.push('/legal/terms')}
       >
         {t('auth.terms')}
       </Text>
@@ -26,7 +22,7 @@ export function TermsLine() {
         weight="600"
         color="ground"
         accessibilityRole="link"
-        onPress={() => void Linking.openURL(PRIVACY_URL)}
+        onPress={() => router.push('/legal/privacy')}
       >
         {t('auth.privacy')}
       </Text>

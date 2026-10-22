@@ -23,10 +23,8 @@ import { formatNumber } from '@/lib/formatNumber';
 import { formatHijri } from '@/lib/dates';
 import { isValidVerificationCode, normalizeVerificationCode } from '@/lib/verificationCode';
 import { verifyIjazah, type VerifiedIjazah } from '@/features/ijazah/api';
+import { SUPPORT_EMAIL } from '@/lib/contact';
 import { QrScanner } from './QrScanner';
-
-// TODO(support): replace with the real support address.
-const SUPPORT_EMAIL = 'support@mujaz.app';
 
 /** Extracts a code from a scanned verification URL or raw text. */
 function codeFromScan(data: string): string {

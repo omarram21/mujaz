@@ -116,6 +116,7 @@ function RootNavigator() {
         </Stack.Protected>
         {/* Public: reachable while signed out (QR codes deep-link here). */}
         <Stack.Screen name="verify" />
+        <Stack.Screen name="legal" />
       </Stack>
     </>
   );
