@@ -2,7 +2,8 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 // Release identifiers. Replace the placeholders before the first store build.
 const BUNDLE_ID = process.env.APP_BUNDLE_ID ?? 'com.mujaz.app';
-const EAS_PROJECT_ID = process.env.EAS_PROJECT_ID; // set after `eas init`
+// Not a secret: the Expo project (@omarram21/mujaz). Override with EAS_PROJECT_ID.
+const EAS_PROJECT_ID = process.env.EAS_PROJECT_ID ?? '8eba293d-6420-49ee-8795-e352acb6abe4';
 
 const CAMERA_EN =
   'Mujaz uses the camera so your sheikh can see you during live sessions, and to scan Ijazah QR codes.';
@@ -13,6 +14,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Mujaz',
   slug: 'mujaz',
+  owner: 'omarram21',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
