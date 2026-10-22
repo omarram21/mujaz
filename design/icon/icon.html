@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- App icon source. Rendered to assets/images/* at 1024px by headless Chrome.
+     ?v=full | foreground | monochrome | splash   &c=dot|mim
+     Monochrome renders white on black; its alpha is then taken from luminance. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Amiri; font-weight: 700; src: url('../../node_modules/@expo-google-fonts/amiri/700Bold/Amiri_700Bold.ttf'); }
+html, body { margin: 0; background: transparent; }
+svg { display: block; }
+</style></head><body>
+<svg id="s" width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+const q = new URLSearchParams(location.search);
+const v = q.get('v') || 'full';
+const centre = q.get('c') || 'dot';
+const mono = v === 'monochrome';
+// Mark scale: full icon fills ~62%; adaptive foreground must sit in the 66% safe zone.
+const scale = { full: 1, foreground: 0.95, monochrome: 0.95, splash: 1 }[v];
+const gold = mono ? '#fff' : 'url(#gold)';
+const ground = mono ? 'transparent' : '#0D3B2E';
+const S = 300 * scale;           // half-diagonal of each square
+const sq = (rot) => {
+  const pts = [0, 90, 180, 270].map((a) => {
+    const r = ((a + rot) * Math.PI) / 180;
+    return `${512 + S * Math.cos(r)},${512 + S * Math.sin(r)}`;
+  });
+  return `<polygon points="${pts.join(' ')}"/>`;
+};
+const ring = 150 * scale;
+let body = `
+<defs>
+  <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+    <stop offset="0" stop-color="#17543F"/><stop offset="0.6" stop-color="#0D3B2E"/><stop offset="1" stop-color="#071F18"/>
+  </radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ECCF86"/><stop offset="0.55" stop-color="#D4AF5A"/><stop offset="1" stop-color="#B8912E"/>
+  </linearGradient>
+  <pattern id="lattice" width="128" height="128" patternUnits="userSpaceOnUse">
+    <g fill="none" stroke="#D4AF5A" stroke-width="2">
+      <rect x="34" y="34" width="60" height="60"/><rect x="34" y="34" width="60" height="60" transform="rotate(45 64 64)"/>
+    </g>
+  </pattern>
+</defs>`;
+if (v === 'full') body += `<rect width="1024" height="1024" fill="url(#bg)"/><rect width="1024" height="1024" fill="url(#lattice)" opacity="0.07"/>`;
+body += `<g fill="${gold}">${sq(45)}${sq(0)}</g>`;
+body += `<circle cx="512" cy="512" r="${ring}" fill="${mono ? '#000' : ground}"/>`;
+body += `<circle cx="512" cy="512" r="${ring - 18 * scale}" fill="none" stroke="${gold}" stroke-width="${7 * scale}"/>`;
+if (centre === 'mim') {
+  body += `<text x="512" y="${512 + 62 * scale}" text-anchor="middle" font-family="Amiri" font-weight="700" font-size="${250 * scale}" fill="${gold}">م</text>`;
+} else {
+  body += `<circle cx="512" cy="512" r="${44 * scale}" fill="${gold}"/>`;
+}
+document.getElementById('s').innerHTML = body;
+document.fonts.ready.then(() => { document.title = 'ready'; });
+</script></body></html>
