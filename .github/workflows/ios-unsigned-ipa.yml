@@ -10,7 +10,14 @@ on:
 jobs:
   build:
     runs-on: macos-26
-    timeout-minutes: 90
+    timeout-minutes: 120
+    env:
+      # Build React Native and Expo modules from source. With the precompiled
+      # xcframeworks, this unsigned Release build mixed debug/release binaries and
+      # crashed on launch (Fabric commit, EXC_BAD_ACCESS).
+      EXPO_USE_PRECOMPILED_MODULES: '0'
+      RCT_USE_PREBUILT_RNCORE: '0'
+      RCT_USE_RN_DEP: '0'
     steps:
       - uses: actions/checkout@v4
 
