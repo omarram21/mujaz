@@ -38,6 +38,7 @@ jobs:
           EXPO_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
           EXPO_PUBLIC_ENABLE_PHONE_AUTH=false
           EXPO_PUBLIC_ENABLE_GOOGLE_AUTH=false
+          EXPO_PUBLIC_ENABLE_DEV_LOGIN=true
           EXPO_PUBLIC_VERIFY_BASE_URL=https://mujaz.app/verify
           ENV
 

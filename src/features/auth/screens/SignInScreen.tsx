@@ -8,6 +8,7 @@ import { Button, IconButton, Input, Notice, Screen, Text } from '@/components';
 import { signInWithEmail } from '../api';
 import { authErrorKey, signInSchema, type SignInValues } from '../schema';
 import { AltSignIn } from '../components/AltSignIn';
+import { DevQuickLogin } from '../components/DevQuickLogin';
 import { TermsLine } from '../components/TermsLine';
 
 export function SignInScreen() {
@@ -51,6 +52,7 @@ export function SignInScreen() {
           {t('auth.signInSubtitle')}
         </Text>
       </View>
+      <DevQuickLogin onError={setFormError} />
       <View style={{ gap: 13 }}>
         <Controller
           control={control}

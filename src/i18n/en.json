@@ -77,7 +77,13 @@
       "alreadyRegistered": "This email is already registered. Sign in instead.",
       "checkEmail": "We sent a confirmation link to your email. Confirm it, then sign in.",
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "devLoginTitle": "Quick test login",
+    "devLoginHint": "Demo accounts, for testing only",
+    "devRole_admin": "Admin",
+    "devRole_teacher": "Sheikh",
+    "devRole_applicant": "Pending applicant",
+    "devRole_student": "Student"
   },
   "setup": {
     "title": "Tell us about yourself",

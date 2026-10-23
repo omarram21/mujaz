@@ -77,7 +77,13 @@
       "alreadyRegistered": "هذا البريد مسجّل مسبقًا. سجّل الدخول بدلًا من ذلك.",
       "checkEmail": "أرسلنا رابط تأكيد إلى بريدك. أكّده ثم سجّل الدخول.",
       "generic": "حدث خطأ غير متوقع. حاول مرة أخرى."
-    }
+    },
+    "devLoginTitle": "دخول سريع للاختبار",
+    "devLoginHint": "حسابات تجريبية، للاختبار فقط",
+    "devRole_admin": "المدير",
+    "devRole_teacher": "شيخ",
+    "devRole_applicant": "متقدّم قيد المراجعة",
+    "devRole_student": "طالب"
   },
   "setup": {
     "title": "عرّفنا بنفسك",

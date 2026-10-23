@@ -72,4 +72,6 @@ export async function updateProfile(patch: TablesUpdate<'profiles'>): Promise<Pr
 export const authFlags = {
   phone: process.env.EXPO_PUBLIC_ENABLE_PHONE_AUTH === 'true',
   google: process.env.EXPO_PUBLIC_ENABLE_GOOGLE_AUTH === 'true',
+  /** Test builds only: one-tap sign-in with the seeded demo accounts. */
+  devLogin: process.env.EXPO_PUBLIC_ENABLE_DEV_LOGIN === 'true',
 };
