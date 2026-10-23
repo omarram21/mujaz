@@ -6,6 +6,9 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, GeometricPattern, Icon, Logo, Text, type IconName } from '@/components';
 import { useTheme } from '@/theme';
 
+/** Set by test builds (CI) so testers can tell which version is installed. */
+const BUILD_ID = process.env.EXPO_PUBLIC_BUILD_ID?.slice(0, 12);
+
 export function WelcomeScreen() {
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -115,6 +118,11 @@ export function WelcomeScreen() {
             {t('welcome.verify')}
           </Text>
         </Pressable>
+        {BUILD_ID ? (
+          <Text size={10} color="onDarkMuted" align="center" style={{ opacity: 0.6 }}>
+            {`build ${BUILD_ID}`}
+          </Text>
+        ) : null}
       </View>
     </View>
   );

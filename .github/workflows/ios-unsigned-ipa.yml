@@ -17,6 +17,15 @@ jobs:
       EXPO_USE_PRECOMPILED_MODULES: '0'
       RCT_USE_PREBUILT_RNCORE: '0'
       RCT_USE_RN_DEP: '0'
+      # App settings, inlined into the JS bundle. Passed as environment variables
+      # (not only via .env) because the Xcode bundling phase did not pick up .env.
+      EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+      EXPO_PUBLIC_ENABLE_PHONE_AUTH: 'false'
+      EXPO_PUBLIC_ENABLE_GOOGLE_AUTH: 'false'
+      EXPO_PUBLIC_ENABLE_DEV_LOGIN: 'true'
+      EXPO_PUBLIC_VERIFY_BASE_URL: https://mujaz.app/verify
+      EXPO_PUBLIC_BUILD_ID: ${{ github.run_number }}-${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -30,17 +39,6 @@ jobs:
           cache: npm
 
       - run: npm ci
-
-      - name: Write .env
-        run: |
-          cat > .env <<ENV
-          EXPO_PUBLIC_SUPABASE_URL=${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
-          EXPO_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
-          EXPO_PUBLIC_ENABLE_PHONE_AUTH=false
-          EXPO_PUBLIC_ENABLE_GOOGLE_AUTH=false
-          EXPO_PUBLIC_ENABLE_DEV_LOGIN=true
-          EXPO_PUBLIC_VERIFY_BASE_URL=https://mujaz.app/verify
-          ENV
 
       - name: Prebuild iOS project
         run: npx expo prebuild --platform ios --clean
@@ -59,6 +57,14 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
             build | tail -n 200
           echo "SCHEME=$SCHEME" >> "$GITHUB_ENV"
+
+      - name: Check the bundle has the app settings
+        run: |
+          BUNDLE="build/Build/Products/Release-iphoneos/$SCHEME.app/main.jsbundle"
+          HOST=$(echo "$EXPO_PUBLIC_SUPABASE_URL" | sed -E 's#^https?://##; s#/.*##')
+          if [ -z "$HOST" ]; then echo "EXPO_PUBLIC_SUPABASE_URL secret is empty"; exit 1; fi
+          strings "$BUNDLE" | grep -q "$HOST" || { echo "Supabase URL missing from main.jsbundle"; exit 1; }
+          echo "Bundle OK"
 
       - name: Package .ipa
         run: |
